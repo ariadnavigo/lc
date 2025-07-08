@@ -54,7 +54,7 @@ apply_op(double *dest, const Op *op_ptr)
 	case OP_N2:
 		if (stack_pop(&arg1) < 0 || stack_pop(&arg2) < 0)
 			return -1;
-		*dest = (*op_ptr->op_n2)(arg1, arg2);
+		*dest = (*op_ptr->op_n2)(arg2, arg1); /* args are inverted! */
 		break;
 	default:
 		break; /* Theoretically unreachable */
