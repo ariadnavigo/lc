@@ -77,7 +77,7 @@ parse(const char *prompt)
 		str = NULL; /* Required by strtok() */
 
 		/* If token is a number */
-		num_buf = strtol(tok, &endptr, 10);
+		num_buf = strtod(tok, &endptr);
 		if (endptr[0] == '\0') {
 			/* TODO: Check for overflow. */
 			stack_push(num_buf);

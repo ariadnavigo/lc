@@ -4,15 +4,15 @@
 
 #include "op.h"
 
-static long op_add(long m, long n);
+static double op_add(double m, double n);
 
 const Op op_list[] = {
 	{ "+", OP_N2, { .op_n2 = op_add } },
 	{ "", OP_N0, { .op_n0 = NULL } }
 };
 
-static long 
-op_add(long m, long n)
+static double
+op_add(double m, double n)
 {
 	return m + n;
 }

@@ -15,9 +15,9 @@ typedef struct {
 	char name[OP_NAME_SIZE];
 	OpType n;
 	union {
-		long (*op_n0)(void);
-		long (*op_n1)(long);
-		long (*op_n2)(long, long);
+		double (*op_n0)(void);
+		double (*op_n1)(double);
+		double (*op_n2)(double, double);
 	};
 } Op;
 
