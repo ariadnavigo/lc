@@ -16,7 +16,7 @@ all: lc
 $(OBJ): config.mk op.h stack.h utils.h
 
 lc: $(OBJ) 
-	$(CC) -o $@ $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
 clean:
 	rm -f lc $(OBJ)
