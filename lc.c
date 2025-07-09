@@ -112,7 +112,7 @@ main(int argc, char *argv[])
 	size_t prompt_lastchar;
 	char prompt[PROMPT_SIZE];
 
-	while ((opt = getopt(argc, argv, ":vh")) != -1) {
+	while ((opt = getopt(argc, argv, ":v")) != -1) {
 		switch (opt) {
 		case 'v':
 			printf("lc %s\n", VERSION);
