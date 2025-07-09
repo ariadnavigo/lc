@@ -47,12 +47,12 @@ apply_op(double *dest, const Op *op_ptr)
 
 	switch (op_ptr->n) {
 	case OP_N1:
-		if (stack_pop(&arg1) < 0)
+		if (stack_pop(&arg1, NULL) < 0)
 			return -1;
 		*dest = (*op_ptr->op_n1)(arg1);
 		break;
 	case OP_N2:
-		if (stack_pop(&arg1) < 0 || stack_pop(&arg2) < 0)
+		if (stack_pop(&arg1, &arg2, NULL) < 0)
 			return -1;
 		*dest = (*op_ptr->op_n2)(arg2, arg1); /* args are inverted! */
 		break;

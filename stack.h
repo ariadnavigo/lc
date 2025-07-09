@@ -9,6 +9,6 @@ extern double stack[STACK_SIZE];
 extern int sp; /* Our "stack pointer" */
 
 int stack_push(double item);
-int stack_pop(double *dest);
+int stack_pop(double *dest, ...);
 
 #endif
