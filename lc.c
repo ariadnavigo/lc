@@ -78,12 +78,22 @@ parse(const char *prompt)
 
 		/* If token is a number */
 		num_buf = strtod(tok, &endptr);
-		if (endptr[0] == '\0') {
-			/* TODO: Check for overflow. */
-			stack_push(num_buf);
-			continue; /* This saves us an else clause */
-		} 
+		if (endptr[0] != '\0') 
+			goto parse_op;
 
+		if (stack_push(num_buf) < 0) {
+			lc_err = ERR_STACK_OVER;
+			return -1;
+		} else {
+			/* 
+			 * If we arrived here, it's a number that was 
+			 * succesfully pushed to the stack, so let's not run
+			 * through the rest of the while loop.
+			 */
+			continue;
+		}
+
+parse_op:
 		/* Non-numbers are treated as ops. */
 		
 		if ((op_ptr = op(tok)) == NULL) {
