@@ -1,12 +1,12 @@
 # lc - Line-based RPN calculator
 
-lc is a line-based RPN calculator that takes input either from the command line
-or standard input. It supports floating point arithmetics and aims to be
-portable and standards compliant across POSIX(-like) systems.
+lc is a line-based RPN calculator that takes input from standard input. It
+supports floating point arithmetics and aims to be portable and standards
+compliant across POSIX(-like) systems.
 
 ## Caveats
 
-This project is in a **very early stage** of development. Many basic 
+This project is in a **very early stage** of development. Many basic
 mathematical operations are missing. Error checking is still in development.
 POSIX portability and compatibility with non-GNU libraries have **not** been
 tested outside Linux yet.
@@ -27,23 +27,18 @@ You may edit ``config.mk`` to tweak compiling options to your needs.
 
 ## Usage
 
-The command-line interface for lc is described below:
-
-```
-$ lc [-v] [PROMPT]
-```
-
-lc accepts valid RPN expressions (e.g. ``3 4 +``, for "3 + 4") either from
-standard input or as its optional ``PROMPT`` command-line parameter (enclosed by
-quotes). The result is printed to standard output in its own line. Error and
-warning messages are printed to standard error.
+lc accepts valid RPN expressions (e.g. ``3 4 +``, for "3 + 4") from
+standard input. The result is printed to standard output in its own line. Error
+and warning messages are printed to standard error.
 
 For example:
 
 ```
-$ ./lc '2 4 +'
+$ echo '2 4 +' | lc
 6.000000
 ```
+
+Passing the ``-v`` option will print lc's version number and exit.
 
 ## License
 

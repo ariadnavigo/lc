@@ -123,14 +123,10 @@ main(int argc, char *argv[])
 		}
 	}
 
-	if (optind >= argc) {
-		fgets(prompt, PROMPT_SIZE, stdin);
-		prompt_lastchar = strlen(prompt) - 1; 
-		if (prompt[prompt_lastchar] == '\n')
-			prompt[prompt_lastchar] = '\0';
-	} else {
-		snprintf(prompt, PROMPT_SIZE, "%s", argv[optind]);
-	}
+	fgets(prompt, PROMPT_SIZE, stdin);
+	prompt_lastchar = strlen(prompt) - 1; 
+	if (prompt[prompt_lastchar] == '\n')
+		prompt[prompt_lastchar] = '\0';
 
 	if (parse(prompt) < 0)
 		die(error_str());
