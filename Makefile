@@ -19,7 +19,7 @@ lc: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
 docs/lc.1: docs/lc.1.scd
-	scdoc < $< > $@
+	scdoc < docs/lc.1.scd > $@
 
 clean:
 	rm -f lc $(OBJ) docs/lc.1
