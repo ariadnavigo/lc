@@ -26,6 +26,11 @@ In order to build lc, you will need:
 
 You may edit ``config.mk`` to tweak compiling options to your needs.
 
+You may install lc by invoking ``make install`` with the proper permissions. You
+may set ``DESTDIR`` to set up a destination directory, typically used to create
+distibution packages. Conversely, you may uninstall lc by invoking ``make
+uninstall`` (passing DESTDIR if necessary as well).
+
 ## Usage
 
 lc accepts valid RPN expressions (e.g. ``3 4 +``, for "3 + 4") from
