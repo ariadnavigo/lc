@@ -22,6 +22,7 @@ In order to build lc, you will need:
 2. A C17 compiler (gcc, tcc, clang are supported, as well as linking against the
    MUSL implementation of the C Standard Library)
 3. ``make(1)`` (GNU make, bmake are supported)
+4. [scdoc][scdoc-git]: to generate the manpage.
 
 You may edit ``config.mk`` to tweak compiling options to your needs.
 
@@ -44,3 +45,5 @@ Passing the ``-v`` option will print lc's version number and exit.
 
 lc is licensed under the MIT License. See LICENSE file for copyright and
 license details.
+
+[scdoc-git]: https://git.sr.ht/~sircmpwn/scdoc

@@ -1,2 +1,3 @@
 *.o
 lc
+docs/lc.1
