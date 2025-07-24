@@ -125,7 +125,7 @@ main(int argc, char *argv[])
 	while ((opt = getopt(argc, argv, ":v")) != -1) {
 		switch (opt) {
 		case 'v':
-			printf("lc %s\n", VERSION);
+			fprintf(stderr, "lc %s\n", VERSION);
 			return 0;
 		default:
 			usage();
