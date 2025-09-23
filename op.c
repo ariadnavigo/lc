@@ -5,6 +5,15 @@
 
 #include "op.h"
 
+/*
+ * #ifndef M_PI
+ * 	#define M_PI 3.1415926535897932384626433832
+ * #endif
+ */
+
+static double op_const_pi(void);
+static double op_const_e(void);
+
 static double op_add(double m, double n);
 static double op_subst(double m, double n);
 static double op_mult(double m, double n);
@@ -13,6 +22,8 @@ static double op_mod(double m, double n);
 static double op_root(double m, double n);
 
 const Op op_list[] = {
+	{ "pi", OP_N0, { .op_n0 = op_const_pi } },
+	{ "e", OP_N0, { .op_n0 = op_const_e } },
 	{ "+", OP_N2, { .op_n2 = op_add } },
 	{ "-", OP_N2, { .op_n2 = op_subst } },
 	{ "*", OP_N2, { .op_n2 = op_mult } },
@@ -30,6 +41,18 @@ const Op op_list[] = {
 	{ "atan", OP_N1, { .op_n1 = atan } }, /* libm */
 	{ "", OP_N0, { .op_n0 = NULL } } /* "NULL"-terminator */
 };
+
+static double
+op_const_pi(void)
+{
+	return atan(1) * 4;
+}
+
+static double
+op_const_e(void)
+{
+	return exp(1);
+}
 
 static double
 op_add(double m, double n)

@@ -46,6 +46,9 @@ apply_op(double *dest, const Op *op_ptr)
 	double arg1, arg2;
 
 	switch (op_ptr->n) {
+	case OP_N0:
+		*dest = (*op_ptr->op_n0)();
+		break;
 	case OP_N1:
 		if (stack_pop(&arg1, NULL) < 0)
 			return -1;
