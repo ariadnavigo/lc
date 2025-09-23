@@ -25,10 +25,10 @@ const Op op_list[] = {
 	{ "sin", OP_N1, { .op_n1 = sin } }, /* libm */
 	{ "cos", OP_N1, { .op_n1 = cos } }, /* libm */
 	{ "tan", OP_N1, { .op_n1 = tan } }, /* libm */
-	{ "asin", OP_N1, { .op_n1 = tan } }, /* libm */
-	{ "acos", OP_N1, { .op_n1 = tan } }, /* libm */
-	{ "atan", OP_N1, { .op_n1 = tan } }, /* libm */
-	{ "", OP_N0, { .op_n0 = NULL } }
+	{ "asin", OP_N1, { .op_n1 = asin } }, /* libm */
+	{ "acos", OP_N1, { .op_n1 = acos } }, /* libm */
+	{ "atan", OP_N1, { .op_n1 = atan } }, /* libm */
+	{ "", OP_N0, { .op_n0 = NULL } } /* "NULL"-terminator */
 };
 
 static double
