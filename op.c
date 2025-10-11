@@ -5,12 +5,6 @@
 
 #include "op.h"
 
-/*
- * #ifndef M_PI
- * 	#define M_PI 3.1415926535897932384626433832
- * #endif
- */
-
 static double op_const_pi(void);
 static double op_const_e(void);
 
