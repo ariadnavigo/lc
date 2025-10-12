@@ -46,9 +46,28 @@ $ echo '2 4 +' | lc
 
 Passing the ``-v`` option will print lc's version number and exit.
 
+## Contributing
+
+Patches and discusion are welcome at the [lc-devel mailing list][lc-devel-ml].
+Subscribe to the [lc-announce mailing list][lc-announce-ml] for announces about
+releases and other critical milestones.
+
+Tickets are tracked at the [lc tracker][lc-tracker].
+
+You may find further information about this project at the [lc project
+hub][lc-hub] as well.
+
 ## License
 
 lc is licensed under the MIT License. See LICENSE file for copyright and
 license details.
 
 [scdoc-git]: https://git.sr.ht/~sircmpwn/scdoc
+
+[lc-devel-ml]: https://lists.sr.ht/~ariadna/lc-devel
+
+[lc-announce-ml]: https://lists.sr.ht/~ariadna/lc-announce
+
+[lc-tracker]: https://todo.sr.ht/~ariadna/lc
+
+[lc-hub]: https://sr.ht/~ariadna/lc
