@@ -4,6 +4,7 @@
 #define OP_H
 
 #define OP_NAME_SIZE 16
+#define OP_DESCR_SIZE 64
 
 typedef enum {
     OP_N0,
@@ -19,6 +20,7 @@ typedef struct {
         double (*op_n1)(double);
         double (*op_n2)(double, double);
     };
+    const char descr[OP_DESCR_SIZE];
 } Op;
 
 const Op *op(const char *name);

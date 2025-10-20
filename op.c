@@ -18,26 +18,26 @@ static double op_rad(double m);
 static double op_deg(double m);
 
 const Op op_list[] = {
-    { "pi", OP_N0, { .op_n0 = op_const_pi } },
-    { "e", OP_N0, { .op_n0 = op_const_e } },
-    { "+", OP_N2, { .op_n2 = op_add } },
-    { "-", OP_N2, { .op_n2 = op_subst } },
-    { "*", OP_N2, { .op_n2 = op_mult } },
-    { "/", OP_N2, { .op_n2 = op_div } },
-    { "mod", OP_N2, { .op_n2 = op_mod } },
-    { "^", OP_N2, { .op_n2 = pow } }, /* libm */
-    { "root", OP_N2, { .op_n2 = op_root } },
-    { "log", OP_N1, { .op_n1 = log } }, /* libm */
-    { "log10", OP_N1, { .op_n1 = log10 } }, /* libm */
-    { "deg2rad", OP_N1, { .op_n1 = op_rad } },
-    { "rad2deg", OP_N1, { .op_n1 = op_deg } },
-    { "sin", OP_N1, { .op_n1 = sin } }, /* libm */
-    { "cos", OP_N1, { .op_n1 = cos } }, /* libm */
-    { "tan", OP_N1, { .op_n1 = tan } }, /* libm */
-    { "asin", OP_N1, { .op_n1 = asin } }, /* libm */
-    { "acos", OP_N1, { .op_n1 = acos } }, /* libm */
-    { "atan", OP_N1, { .op_n1 = atan } }, /* libm */
-    { "", OP_N0, { .op_n0 = NULL } } /* "NULL"-terminator */
+    { "pi", OP_N0, { .op_n0 = op_const_pi }, "Pi constant" },
+    { "e", OP_N0, { .op_n0 = op_const_e }, "Euler's constant" },
+    { "+", OP_N2, { .op_n2 = op_add }, "Addition" },
+    { "-", OP_N2, { .op_n2 = op_subst }, "Substraction" },
+    { "*", OP_N2, { .op_n2 = op_mult }, "Multiplication" },
+    { "/", OP_N2, { .op_n2 = op_div }, "Division" },
+    { "mod", OP_N2, { .op_n2 = op_mod }, "Modulo" },
+    { "^", OP_N2, { .op_n2 = pow }, "" }, /* libm */
+    { "root", OP_N2, { .op_n2 = op_root }, "" },
+    { "log", OP_N1, { .op_n1 = log }, "Natural logarithm" }, /* libm */
+    { "log10", OP_N1, { .op_n1 = log10 }, "Logarithm base 10" }, /* libm */
+    { "deg2rad", OP_N1, { .op_n1 = op_rad }, "Convert degrees into radians" },
+    { "rad2deg", OP_N1, { .op_n1 = op_deg }, "Convert radians into degrees" },
+    { "sin", OP_N1, { .op_n1 = sin }, "Sine" }, /* libm */
+    { "cos", OP_N1, { .op_n1 = cos }, "Cosine" }, /* libm */
+    { "tan", OP_N1, { .op_n1 = tan }, "Tangent" }, /* libm */
+    { "asin", OP_N1, { .op_n1 = asin }, "Arcsine" }, /* libm */
+    { "acos", OP_N1, { .op_n1 = acos }, "Arccosine" }, /* libm */
+    { "atan", OP_N1, { .op_n1 = atan }, "Arctangent" }, /* libm */
+    { "", OP_N0, { .op_n0 = NULL }, "" } /* "NULL"-terminator */
 };
 
 static double op_const_pi(void)
