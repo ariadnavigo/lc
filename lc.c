@@ -30,8 +30,7 @@ static void help_all_ops(void);
 
 static LCErr lc_err = NO_ERROR;
 
-static const char *error_str(void)
-{
+static const char *error_str(void) {
     switch (lc_err) {
     case ERR_FEW_ARGS:
         return "Too few arguments available for an operation";
@@ -44,8 +43,7 @@ static const char *error_str(void)
     }
 }
 
-static void pprint_op(const Op *op_ptr)
-{
+static void pprint_op(const Op *op_ptr) {
     switch (op_ptr->n) {
     case 0:
         printf("\t");
@@ -63,8 +61,7 @@ static void pprint_op(const Op *op_ptr)
     printf("%s\t%s\n", op_ptr->name, op_ptr->descr);
 }
 
-static int apply_op(double *dest, const Op *op_ptr)
-{
+static int apply_op(double *dest, const Op *op_ptr) {
     double arg1, arg2;
 
     switch (op_ptr->n) {
@@ -88,8 +85,7 @@ static int apply_op(double *dest, const Op *op_ptr)
     return 0;
 }
 
-static int parse(const char *prompt)
-{
+static int parse(const char *prompt) {
     double num_buf, res;
     const Op *op_ptr;
     char *tok, *str, *endptr;
@@ -139,8 +135,7 @@ parse_op:
     return 0;
 }
 
-static int help_single_op(const char *name)
-{
+static int help_single_op(const char *name) {
     const Op *op_ptr;
 
     if ((op_ptr = op(name)) == NULL) {
@@ -153,16 +148,14 @@ static int help_single_op(const char *name)
     return 0;
 }
 
-static void help_all_ops(void)
-{
+static void help_all_ops(void) {
     const Op *op_ptr;
     
     for (op_ptr = op_iter(1); op_ptr != NULL; op_ptr = op_iter(0))
         pprint_op(op_ptr);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int opt, help_mode;
     size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];

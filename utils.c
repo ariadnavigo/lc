@@ -6,8 +6,7 @@
 
 #include "utils.h"
 
-void die(const char *fmt, ...)
-{
+void die(const char *fmt, ...) {
     va_list ap;
 
     va_start(ap, fmt);
@@ -19,7 +18,6 @@ void die(const char *fmt, ...)
     exit(1);
 }
 
-void usage(void)
-{
+void usage(void) {
     die("usage: lc [-Hv] [-h OPERATION]");
 }

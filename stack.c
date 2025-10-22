@@ -8,8 +8,7 @@
 double stack[STACK_SIZE];
 int sp = -1;
 
-int stack_push(double item)
-{
+int stack_push(double item) {
     if (sp + 1 >= STACK_SIZE) {
         sp = STACK_SIZE - 1;
         return -1;
@@ -20,8 +19,7 @@ int stack_push(double item)
     return 0;
 }
 
-int stack_pop(double *dest, ...)
-{
+int stack_pop(double *dest, ...) {
     va_list ap;
     double *ptr;
     int ret;
