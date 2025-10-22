@@ -21,5 +21,5 @@ void die(const char *fmt, ...)
 
 void usage(void)
 {
-    die("usage: lc [-v]");
+    die("usage: lc [-Hv] [-h OPERATION]");
 }

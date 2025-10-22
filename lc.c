@@ -20,8 +20,13 @@ typedef enum {
 } LCErr;
 
 static const char *error_str(void);
+static void pprint_op(const Op *op_ptr);
+
 static int apply_op(double *dest, const Op *op_ptr);
 static int parse(const char *prompt);
+
+static int help_single_op(const char *name);
+static void help_all_ops(void);
 
 static LCErr lc_err = NO_ERROR;
 
@@ -37,6 +42,25 @@ static const char *error_str(void)
     default:
         return "";
     }
+}
+
+static void pprint_op(const Op *op_ptr)
+{
+    switch (op_ptr->n) {
+    case 0:
+        printf("\t");
+        break;
+    case 1:
+        printf("n1\t");
+        break;
+    case 2:
+        printf("n1 n2\t");
+        break;
+    default:
+        break; /* UNREACHABLE */
+    }
+
+    printf("%s\t%s\n", op_ptr->name, op_ptr->descr);
 }
 
 static int apply_op(double *dest, const Op *op_ptr)
@@ -115,22 +139,59 @@ parse_op:
     return 0;
 }
 
+static int help_single_op(const char *name)
+{
+    const Op *op_ptr;
+
+    if ((op_ptr = op(name)) == NULL) {
+        lc_err = ERR_OP;
+        return -1;
+    }
+
+    pprint_op(op_ptr);
+
+    return 0;
+}
+
+static void help_all_ops(void)
+{
+    const Op *op_ptr;
+    
+    for (op_ptr = op_iter(1); op_ptr != NULL; op_ptr = op_iter(0))
+        pprint_op(op_ptr);
+}
+
 int main(int argc, char *argv[])
 {
-    int opt;
+    int opt, help_mode;
     size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];
 
-    while ((opt = getopt(argc, argv, ":v")) != -1) {
+    help_mode = 0;
+    while ((opt = getopt(argc, argv, ":Hvh:")) != -1) {
         switch (opt) {
+        case 'H':
+            help_mode = 1;
+            help_all_ops();
+            break;
         case 'v':
             fprintf(stderr, "lc %s\n", VERSION);
             return 0;
+        case 'h':
+            help_mode = 1;
+            help_single_op(optarg);
+            break;
         default:
             usage();
             break; /* UNREACHABLE */
         }
     }
+
+    if (lc_err != NO_ERROR)
+        die(error_str());
+
+    if (help_mode > 0)
+        return 0;
 
     fgets(prompt, PROMPT_SIZE, stdin);
     prompt_lastchar = strlen(prompt) - 1; 
