@@ -55,7 +55,7 @@ static void pprint_op(const Op *op_ptr) {
         printf("n1 n2\t");
         break;
     default:
-        break; /* UNREACHABLE */
+        break; // UNREACHABLE
     }
 
     printf("%s\t%s\n", op_ptr->name, op_ptr->descr);
@@ -76,10 +76,10 @@ static int apply_op(double *dest, const Op *op_ptr) {
     case OP_N2:
         if (stack_pop(&arg1, &arg2, NULL) < 0)
             return -1;
-        *dest = (*op_ptr->op_n2)(arg2, arg1); /* args are inverted! */
+        *dest = (*op_ptr->op_n2)(arg2, arg1); // args are inverted!
         break;
     default:
-        break; /* Theoretically unreachable */
+        break; // Theoretically unreachable
     }
 
     return 0;
@@ -94,7 +94,7 @@ static int parse(const char *prompt) {
     strncpy(cpy, prompt, PROMPT_SIZE);
     str = cpy;
     while ((tok = strtok(str, " ")) != NULL) {
-        str = NULL; /* Required by strtok() */
+        str = NULL; // Required by strtok()
 
         /* If token is a number */
         num_buf = strtod(tok, &endptr);
@@ -176,7 +176,7 @@ int main(int argc, char *argv[]) {
             break;
         default:
             usage();
-            break; /* UNREACHABLE */
+            break; // UNREACHABLE
         }
     }
 

@@ -3,12 +3,12 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define STACK_SIZE 32 /* Elements max allowed in stack */
+#define STACK_SIZE 32 // Elements max allowed in stack
 
 int stack_push(double item);
 int stack_pop(double *dest, ...);
 
 extern double stack[STACK_SIZE];
-extern int sp; /* Our "stack pointer" */
+extern int sp; // Our "stack pointer"
 
 #endif

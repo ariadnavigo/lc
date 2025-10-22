@@ -25,19 +25,19 @@ static const Op op_list[] = {
     { "*", OP_N2, { .op_n2 = op_mult }, "Multiply n1 by n2" },
     { "/", OP_N2, { .op_n2 = op_div }, "Divide n1 by n2" },
     { "mod", OP_N2, { .op_n2 = op_mod }, "n1 modulo n2" },
-    { "^", OP_N2, { .op_n2 = pow }, "n2-th power of n1" }, /* libm */
+    { "^", OP_N2, { .op_n2 = pow }, "n2-th power of n1" }, // libm 
     { "root", OP_N2, { .op_n2 = op_root }, "n2-th root of n1" },
-    { "log", OP_N1, { .op_n1 = log }, "Natural logarithm" }, /* libm */
-    { "log10", OP_N1, { .op_n1 = log10 }, "Logarithm base 10" }, /* libm */
+    { "log", OP_N1, { .op_n1 = log }, "Natural logarithm" }, // libm 
+    { "log10", OP_N1, { .op_n1 = log10 }, "Logarithm base 10" }, // libm 
     { "deg2rad", OP_N1, { .op_n1 = op_rad }, "n1 degrees into n2 radians" },
     { "rad2deg", OP_N1, { .op_n1 = op_deg }, "n1 radians into n2 degrees" },
-    { "sin", OP_N1, { .op_n1 = sin }, "Sine" }, /* libm */
-    { "cos", OP_N1, { .op_n1 = cos }, "Cosine" }, /* libm */
-    { "tan", OP_N1, { .op_n1 = tan }, "Tangent" }, /* libm */
-    { "asin", OP_N1, { .op_n1 = asin }, "Arcsine" }, /* libm */
-    { "acos", OP_N1, { .op_n1 = acos }, "Arccosine" }, /* libm */
-    { "atan", OP_N1, { .op_n1 = atan }, "Arctangent" }, /* libm */
-    { "", OP_N0, { .op_n0 = NULL }, "" } /* "NULL"-terminator */
+    { "sin", OP_N1, { .op_n1 = sin }, "Sine" }, // libm 
+    { "cos", OP_N1, { .op_n1 = cos }, "Cosine" }, // libm 
+    { "tan", OP_N1, { .op_n1 = tan }, "Tangent" }, // libm 
+    { "asin", OP_N1, { .op_n1 = asin }, "Arcsine" }, // libm 
+    { "acos", OP_N1, { .op_n1 = acos }, "Arccosine" }, // libm 
+    { "atan", OP_N1, { .op_n1 = atan }, "Arctangent" }, // libm 
+    { "", OP_N0, { .op_n0 = NULL }, "" } // "NULL"-terminator 
 };
 
 static double op_const_pi(void) {
