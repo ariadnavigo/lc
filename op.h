@@ -23,6 +23,7 @@ typedef struct {
     const char descr[OP_DESCR_SIZE];
 } Op;
 
+const Op *op_iter(int reset);
 const Op *op(const char *name);
 
 #endif

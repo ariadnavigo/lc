@@ -17,7 +17,7 @@ static double op_root(double m, double n);
 static double op_rad(double m);
 static double op_deg(double m);
 
-const Op op_list[] = {
+static const Op op_list[] = {
     { "pi", OP_N0, { .op_n0 = op_const_pi }, "Pi constant" },
     { "e", OP_N0, { .op_n0 = op_const_e }, "Euler's constant" },
     { "+", OP_N2, { .op_n2 = op_add }, "Addition" },
@@ -90,11 +90,24 @@ static double op_deg(double m)
     return m * 180 / op_const_pi();
 }
 
+const Op *op_iter(int reset)
+{
+    static const Op *i = op_list;
+
+    if (reset > 0)
+        i = op_list;
+
+    if (strlen(i->name) > 0)
+        return i++;
+
+    return NULL;
+}
+
 const Op *op(const char *name)
 {
     const Op *ptr;
 
-    for (ptr = op_list; strncmp(ptr->name, "", OP_NAME_SIZE) != 0; ++ptr) {
+    for (ptr = op_iter(1); ptr != NULL; ptr = op_iter(0)) {
         if (strncmp(ptr->name, name, OP_NAME_SIZE) == 0)
             return ptr;
     }
