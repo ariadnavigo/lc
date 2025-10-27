@@ -166,19 +166,19 @@ int main(int argc, char *argv[]) {
     char prompt[PROMPT_SIZE];
 
     docs_mode = 0;
-    while ((opt = getopt(argc, argv, ":Dvd:")) != -1) {
+    while ((opt = getopt(argc, argv, ":Dd:v")) != -1) {
         switch (opt) {
         case 'D':
             docs_mode = 1;
             docs_all_ops();
             break;
-        case 'v':
-            fprintf(stderr, "lc %s\n", VERSION);
-            return 0;
         case 'd':
             docs_mode = 1;
             docs_single_op(optarg);
             break;
+        case 'v':
+            fprintf(stderr, "lc %s\n", VERSION);
+            return 0;
         default:
             usage();
             break; // UNREACHABLE
