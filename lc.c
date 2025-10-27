@@ -177,7 +177,7 @@ int main(int argc, char *argv[]) {
             docs_single_op(optarg);
             break;
         case 'v':
-            fprintf(stderr, "lc %s\n", VERSION);
+            printf("lc %s\n", VERSION);
             return 0;
         default:
             usage();
