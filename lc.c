@@ -25,8 +25,8 @@ static void pprint_op(const Op *op_ptr);
 static int apply_op(double *dest, const Op *op_ptr);
 static int parse(const char *prompt);
 
-static int help_single_op(const char *name);
-static void help_all_ops(void);
+static int docs_single_op(const char *name);
+static void docs_all_ops(void);
 
 static LCErr lc_err = NO_ERROR;
 
@@ -135,7 +135,7 @@ parse_op:
     return 0;
 }
 
-static int help_single_op(const char *name) {
+static int docs_single_op(const char *name) {
     const Op *op_ptr;
 
     if ((op_ptr = op(name)) == NULL) {
@@ -148,7 +148,7 @@ static int help_single_op(const char *name) {
     return 0;
 }
 
-static void help_all_ops(void) {
+static void docs_all_ops(void) {
     const Op *op_ptr;
     
     for (op_ptr = op_iter(1); op_ptr != NULL; op_ptr = op_iter(0))
@@ -156,23 +156,23 @@ static void help_all_ops(void) {
 }
 
 int main(int argc, char *argv[]) {
-    int opt, help_mode;
+    int opt, docs_mode;
     size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];
 
-    help_mode = 0;
-    while ((opt = getopt(argc, argv, ":Hvh:")) != -1) {
+    docs_mode = 0;
+    while ((opt = getopt(argc, argv, ":Dvd:")) != -1) {
         switch (opt) {
-        case 'H':
-            help_mode = 1;
-            help_all_ops();
+        case 'D':
+            docs_mode = 1;
+            docs_all_ops();
             break;
         case 'v':
             fprintf(stderr, "lc %s\n", VERSION);
             return 0;
-        case 'h':
-            help_mode = 1;
-            help_single_op(optarg);
+        case 'd':
+            docs_mode = 1;
+            docs_single_op(optarg);
             break;
         default:
             usage();
@@ -183,7 +183,7 @@ int main(int argc, char *argv[]) {
     if (lc_err != NO_ERROR)
         die(error_str());
 
-    if (help_mode > 0)
+    if (docs_mode > 0)
         return 0;
 
     fgets(prompt, PROMPT_SIZE, stdin);
