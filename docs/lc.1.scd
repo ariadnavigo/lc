@@ -6,7 +6,7 @@ lc - line-based RPN calculator
 
 # SYNOPSIS
 
-*lc* [*-v*]
+*lc* [*-Dv*] [*-d* _OPERATION_]
 
 # DESCRIPTION
 
@@ -21,6 +21,12 @@ and warning messages are printed to standard error.
 Passing the _-v_ option will print lc's version number and exit.
 
 # OPTIONS
+
+*-D*
+	Print a list of all supported operations with a short description and exit.
+
+*-d* _OPERATION_
+	Print the short description for _OPERATION_ and exit.
 
 *-v*
 	Print lc's version number and exit.
