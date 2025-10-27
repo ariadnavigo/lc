@@ -18,6 +18,3 @@ void die(const char *fmt, ...) {
     exit(-1);
 }
 
-void usage(void) {
-    die("usage: lc [-Dv] [-d OPERATION]");
-}

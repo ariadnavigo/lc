@@ -19,6 +19,7 @@ typedef enum {
     ERR_STACK_OVER
 } LCErr;
 
+static void usage(void);
 static const char *error_str(void);
 static void pprint_op(const Op *op_ptr);
 
@@ -29,6 +30,10 @@ static int docs_single_op(const char *name);
 static void docs_all_ops(void);
 
 static LCErr lc_err = NO_ERROR;
+
+static void usage(void) {
+    die("usage: lc [-Dv] [-d OPERATION]");
+}
 
 static const char *error_str(void) {
     switch (lc_err) {

@@ -4,6 +4,5 @@
 #define UTILS_H
 
 void die(const char *fmt, ...);
-void usage(void);
 
 #endif
