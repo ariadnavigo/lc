@@ -32,7 +32,7 @@ static void docs_all_ops(void);
 static LCErr lc_err = NO_ERROR;
 
 static void usage(void) {
-    die("usage: lc [-Dv] [-d OPERATION]");
+    die("usage: lc [-Dv] [-d OPERATION] [-e EXPRESSION]");
 }
 
 static const char *error_str(void) {
@@ -161,12 +161,13 @@ static void docs_all_ops(void) {
 }
 
 int main(int argc, char *argv[]) {
-    int opt, docs_mode;
+    int opt, docs_mode, expr_mode;
     size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];
 
     docs_mode = 0;
-    while ((opt = getopt(argc, argv, ":Dd:v")) != -1) {
+    expr_mode = 0;
+    while ((opt = getopt(argc, argv, ":Dd:e:v")) != -1) {
         switch (opt) {
         case 'D':
             docs_mode = 1;
@@ -175,6 +176,10 @@ int main(int argc, char *argv[]) {
         case 'd':
             docs_mode = 1;
             docs_single_op(optarg);
+            break;
+        case 'e':
+            expr_mode = 1;
+            strncpy(prompt, optarg, PROMPT_SIZE);
             break;
         case 'v':
             printf("lc %s\n", VERSION);
@@ -191,7 +196,9 @@ int main(int argc, char *argv[]) {
     if (docs_mode > 0)
         return 0;
 
-    fgets(prompt, PROMPT_SIZE, stdin);
+    if (expr_mode != 1)
+        fgets(prompt, PROMPT_SIZE, stdin);
+
     prompt_lastchar = strlen(prompt) - 1; 
     if (prompt[prompt_lastchar] == '\n')
         prompt[prompt_lastchar] = '\0';
