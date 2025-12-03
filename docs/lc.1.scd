@@ -14,9 +14,9 @@ lc is a line-based RPN calculator that supports floating point arithmetics and
 aims to be portable and standards compliant across POSIX(-like) systems.
 
 lc accepts valid RPN expressions (e.g. "3 4 +", for "3 + 4") from standard input
-by default or from the CLI by passing the _-e_ option. The result is printed to
-standard output in its own line. Error and warning messages are printed to
-standard error.
+by default or by passing the _-e_ option. The result is printed to standard
+output in its own line. Error and warning messages are printed to standard
+error.
 
 Passing the _-v_ option will print lc's version number and exit.
 
@@ -29,7 +29,9 @@ Passing the _-v_ option will print lc's version number and exit.
 	Print the short description for _OPERATION_ and exit.
 
 *-e* _EXPRESSION_
-	Evaluate _EXPRESSION,_ print the result and exit. 
+	Evaluate _EXPRESSION,_ print the result and exit. _EXPRESSION_ must be
+	enclosed by quotes in order for negative numbers not to be interpreted as
+	command-line options.
 
 *-v*
 	Print lc's version number and exit.
@@ -50,6 +52,11 @@ Getting the result of "(sqrt(4) - 3) / 3" and printing the result:
 
 $ *echo '4 sqrt 3 - 3 /' | lc*++
 -0.333333
+
+Calculate "-10^3" using the _-e_ option instead of standard input:
+
+$ *lc -e '-10 3 ^'*++
+-1000.000000
 
 # SEE ALSO
 
