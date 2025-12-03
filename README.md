@@ -33,24 +33,28 @@ uninstall`` (passing DESTDIR if necessary as well).
 
 ## Usage
 
-lc accepts valid RPN expressions (e.g. ``3 4 +``, for "3 + 4") from
-standard input. The result is printed to standard output in its own line. Error
-and warning messages are printed to standard error.
+lc accepts valid RPN expressions (e.g. ``3 4 +``, for "3 + 4") from standard
+input by default or by passing the ``-e`` option. The result is printed to
+standard output in its own line. Error o and warning messages are printed to
+standard error.
 
 For example:
 
 ```
 $ echo '2 4 +' | lc
 6.000000
+$ lc -e '-10 3 ^'
+-1000.000000
 ```
 
-Passing the ``-v`` option will print lc's version number and exit.
+A manual page ``lc(1)`` is provided with further information about other
+options and lc in general.
 
 ## Contributing
 
-Patches and discusion are welcome at the [lc-devel mailing list][lc-devel-ml].
-Subscribe to the [lc-announce mailing list][lc-announce-ml] for announces about
-releases and other critical milestones.
+Patches and discussion are welcome at the [lc-devel mailing list][lc-devel-ml].
+Subscribe to the [lc-announce mailing list][lc-announce-ml] for announcements 
+about releases and other critical milestones.
 
 Tickets are tracked at the [lc tracker][lc-tracker].
 
