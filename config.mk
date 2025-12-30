@@ -10,7 +10,7 @@ MANPREFIX = /usr/local/man
 
 # Flags
 CPPFLAGS = -D_POSIX_C_SOURCE=202405L -DVERSION=\"$(VERSION)\"
-CFLAGS = -std=c17 -Wall -Wextra -pedantic $(CPPFLAGS)
+CFLAGS = -std=c23 -Wall -Wextra -pedantic $(CPPFLAGS)
 LDFLAGS = -lm
 
 # Compiler and linker
