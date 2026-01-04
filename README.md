@@ -57,11 +57,21 @@ If you are not familiar with the Git email patch workflow,
 [git-send-email.io][git-mail-web] is a great resource that walks you through the
 basics. 
 
-When sending a patch, it is highly recommended that you use this command:
+When sending a patch for the first time, it is highly recommended to set up the
+email address like this:
 
 ```shell
-$ git send-email --anotate -v1 HEAD~1
+$ git config sendemail.to "~ariadna/lc-devel@lists.sr.ht"
 ```
+
+The first version of a patch should be marked using ``-v1``:
+
+```shell
+$ git send-email --anotate -v1 HEAD^
+```
+
+For further versions of the patch, change ``-v1`` to ``-v2, -v3, ...`` as
+required.
 
 Subscribe to the [lc-announce mailing list][lc-announce-ml] for announcements 
 about releases and other critical milestones.
