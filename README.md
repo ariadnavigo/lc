@@ -53,6 +53,16 @@ options and lc in general.
 ## Contributing
 
 Patches and discussion are welcome at the [lc-devel mailing list][lc-devel-ml].
+If you are not familiar with the Git email patch workflow,
+[git-send-email.io][git-mail-web] is a great resource that walks you through the
+basics. 
+
+When sending a patch, it is highly recommended that you use this command:
+
+```shell
+$ git send-email --anotate -v1 HEAD~1
+```
+
 Subscribe to the [lc-announce mailing list][lc-announce-ml] for announcements 
 about releases and other critical milestones.
 
@@ -69,6 +79,8 @@ license details.
 [scdoc-git]: https://git.sr.ht/~sircmpwn/scdoc
 
 [lc-devel-ml]: https://lists.sr.ht/~ariadna/lc-devel
+
+[git-mail-web]: https://git-send-email.io/
 
 [lc-announce-ml]: https://lists.sr.ht/~ariadna/lc-announce
 
