@@ -40,7 +40,7 @@ standard error.
 
 For example:
 
-```
+```shell
 $ echo '2 4 +' | lc
 6.000000
 $ lc -e '-10 3 ^'
