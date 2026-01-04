@@ -29,7 +29,7 @@ You may edit ``config.mk`` to tweak compiling options to your needs.
 You may install lc by invoking ``make install`` with the proper permissions. You
 may set ``DESTDIR`` to set up a destination directory, typically used to create
 distibution packages. Conversely, you may uninstall lc by invoking ``make
-uninstall`` (passing DESTDIR if necessary as well).
+uninstall`` (passing ``DESTDIR`` if necessary as well).
 
 ## Usage
 
@@ -70,7 +70,7 @@ The first version of a patch should be marked using ``-v1``:
 $ git send-email --anotate -v1 HEAD^
 ```
 
-For further versions of the patch, change ``-v1`` to ``-v2, -v3, ...`` as
+For further versions of the patch, change ``-v1`` to ``-v2,-v3,...`` as
 required.
 
 Subscribe to the [lc-announce mailing list][lc-announce-ml] for announcements 
