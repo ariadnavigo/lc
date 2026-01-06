@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,12 +18,6 @@ typedef enum {
     ERR_STACK_OVER
 } LCErr;
 
-typedef enum {
-    DEF_MODE,
-    DOCS_MODE,
-    EXPR_MODE
-} LCMode;
-
 static void usage(void);
 static const char *error_str(void);
 static void pprint_op(const Op *op_ptr);
@@ -32,8 +25,9 @@ static void pprint_op(const Op *op_ptr);
 static int apply_op(double *dest, const Op *op_ptr);
 static int parse(const char *prompt);
 
-static int docs_single_op(const char *name);
-static void docs_all_ops(void);
+static void docs_all_ops_mode(void);
+static void docs_single_op_mode(const char *name);
+static void calc_mode(char *prompt);
 
 static LCErr lc_err = NO_ERROR;
 
@@ -146,47 +140,52 @@ parse_op:
     return 0;
 }
 
-static int docs_single_op(const char *name) {
-    const Op *op_ptr;
-
-    if ((op_ptr = op(name)) == NULL) {
-        lc_err = ERR_OP;
-        return -1;
-    }
-
-    pprint_op(op_ptr);
-
-    return 0;
-}
-
-static void docs_all_ops(void) {
+static void docs_all_ops_mode(void) {
     const Op *op_ptr;
     
     for (op_ptr = op_iter(1); op_ptr != NULL; op_ptr = op_iter(0))
         pprint_op(op_ptr);
 }
 
+static void docs_single_op_mode(const char *name) {
+    const Op *op_ptr;
+
+    if ((op_ptr = op(name)) == NULL) {
+        lc_err = ERR_OP;
+        die(error_str());
+    }
+
+    pprint_op(op_ptr);
+}
+
+static void calc_mode(char *prompt) {
+    size_t prompt_lastchar;
+
+    prompt_lastchar = strlen(prompt) - 1; 
+    if (prompt[prompt_lastchar] == '\n')
+        prompt[prompt_lastchar] = '\0';
+
+    if (parse(prompt) < 0)
+        die(error_str());
+
+    printf("%f\n", stack[sp]);
+}
+
 int main(int argc, char *argv[]) {
     int opt;
-    LCMode mode;
-    size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];
 
-    mode = DEF_MODE;
     while ((opt = getopt(argc, argv, ":Dd:e:v")) != -1) {
         switch (opt) {
         case 'D':
-            mode = DOCS_MODE;
-            docs_all_ops();
-            break;
+            docs_all_ops_mode();
+            return 0;
         case 'd':
-            mode = DOCS_MODE;
-            docs_single_op(optarg);
-            break;
+            docs_single_op_mode(optarg);
+            return 0;
         case 'e':
-            mode = EXPR_MODE;
-            strncpy(prompt, optarg, PROMPT_SIZE);
-            break;
+            calc_mode(optarg);
+            return 0;
         case 'v':
             /* Ignore mode */
             printf("lc %s\n", VERSION);
@@ -197,31 +196,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    /* 
-     * This is why we break from DOCS_MODE cases above, instead of using
-     * immediate returns.
-     */
-    if (lc_err != NO_ERROR)
-        die(error_str());
-
-    switch (mode) {
-    case DOCS_MODE:
-        return 0;
-    case DEF_MODE:
-        fgets(prompt, PROMPT_SIZE, stdin);
-        break;
-    default: // i.e. EXPR_MODE
-        break;
-    }
-
-    prompt_lastchar = strlen(prompt) - 1; 
-    if (prompt[prompt_lastchar] == '\n')
-        prompt[prompt_lastchar] = '\0';
-
-    if (parse(prompt) < 0)
-        die(error_str());
-
-    printf("%f\n", stack[sp]);
+    fgets(prompt, PROMPT_SIZE, stdin);
+    calc_mode(prompt);
 
     return 0;
 
