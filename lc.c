@@ -23,7 +23,7 @@ static const char *error_str(void);
 static void pprint_op(const Op *op_ptr);
 
 static int apply_op(double *dest, const Op *op_ptr);
-static int parse(const char *prompt);
+static int parse(const char *prompt, char *errtok);
 
 static void docs_all_ops_mode(void);
 static void docs_single_op_mode(const char *name);
@@ -90,7 +90,7 @@ static int apply_op(double *dest, const Op *op_ptr) {
     return 0;
 }
 
-static int parse(const char *prompt) {
+static int parse(const char *prompt, char *errtok) {
     double num_buf, res;
     const Op *op_ptr;
     char *tok, *str, *endptr;
@@ -123,6 +123,7 @@ parse_op:
         
         if ((op_ptr = op(tok)) == NULL) {
             lc_err = ERR_OP;
+            strncpy(errtok, tok, PROMPT_SIZE);
             return -1;
         }
 
@@ -160,13 +161,18 @@ static void docs_single_op_mode(const char *name) {
 
 static void calc_mode(char *prompt) {
     size_t prompt_lastchar;
+    char errtok[PROMPT_SIZE];
 
     prompt_lastchar = strlen(prompt) - 1; 
     if (prompt[prompt_lastchar] == '\n')
         prompt[prompt_lastchar] = '\0';
 
-    if (parse(prompt) < 0)
-        die(error_str());
+    if (parse(prompt, errtok) < 0) {
+        if (lc_err == ERR_OP)
+            die("%s: %s", error_str(), errtok);
+        else
+            die(error_str());
+    }
 
     printf("%f\n", stack[sp]);
 }
