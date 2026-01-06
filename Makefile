@@ -5,7 +5,7 @@
 
 include config.mk
 
-SRC = lc.c op.c stack.c utils.c
+SRC = lc.c op.c stack.c
 OBJ = $(SRC:.c=.o)
 
 all: lc docs/lc.1
@@ -13,7 +13,7 @@ all: lc docs/lc.1
 .c.o:
 	$(CC) -c $< $(CFLAGS)
 
-$(OBJ): config.mk op.h stack.h utils.h
+$(OBJ): config.mk op.h stack.h
 
 lc: $(OBJ) 
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)

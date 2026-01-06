@@ -1,4 +1,6 @@
 /* See LICENSE file for copyright and license details. */
+
+#include <stdarg.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +9,6 @@
 
 #include "op.h"
 #include "stack.h"
-#include "utils.h"
 
 #define PROMPT_SIZE 128
 
@@ -30,6 +31,18 @@ static void docs_single_op_mode(const char *name);
 static void calc_mode(char *prompt);
 
 static LCErr lc_err = NO_ERROR;
+
+static void die(const char *fmt, ...) {
+    va_list ap;
+
+    va_start(ap, fmt);
+    vfprintf(stderr, fmt, ap);
+    va_end(ap);
+
+    fputc('\n', stderr);
+
+    exit(-1);
+}
 
 static void usage(void) {
     die("usage: lc [-Dv] [-d OPERATION] [-e EXPRESSION]");
