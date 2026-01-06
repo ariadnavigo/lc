@@ -19,6 +19,12 @@ typedef enum {
     ERR_STACK_OVER
 } LCErr;
 
+typedef enum {
+    DEF_MODE,
+    DOCS_MODE,
+    EXPR_MODE
+} LCMode;
+
 static void usage(void);
 static const char *error_str(void);
 static void pprint_op(const Op *op_ptr);
@@ -161,27 +167,28 @@ static void docs_all_ops(void) {
 }
 
 int main(int argc, char *argv[]) {
-    int opt, docs_mode, expr_mode;
+    int opt;
+    LCMode mode;
     size_t prompt_lastchar;
     char prompt[PROMPT_SIZE];
 
-    docs_mode = 0;
-    expr_mode = 0;
+    mode = DEF_MODE;
     while ((opt = getopt(argc, argv, ":Dd:e:v")) != -1) {
         switch (opt) {
         case 'D':
-            docs_mode = 1;
+            mode = DOCS_MODE;
             docs_all_ops();
             break;
         case 'd':
-            docs_mode = 1;
+            mode = DOCS_MODE;
             docs_single_op(optarg);
             break;
         case 'e':
-            expr_mode = 1;
+            mode = EXPR_MODE;
             strncpy(prompt, optarg, PROMPT_SIZE);
             break;
         case 'v':
+            /* Ignore mode */
             printf("lc %s\n", VERSION);
             return 0;
         default:
@@ -190,14 +197,22 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    /* 
+     * This is why we break from DOCS_MODE cases above, instead of using
+     * immediate returns.
+     */
     if (lc_err != NO_ERROR)
         die(error_str());
 
-    if (docs_mode > 0)
+    switch (mode) {
+    case DOCS_MODE:
         return 0;
-
-    if (expr_mode != 1)
+    case DEF_MODE:
         fgets(prompt, PROMPT_SIZE, stdin);
+        break;
+    default: // i.e. EXPR_MODE
+        break;
+    }
 
     prompt_lastchar = strlen(prompt) - 1; 
     if (prompt[prompt_lastchar] == '\n')
