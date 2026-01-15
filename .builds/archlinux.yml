@@ -1,7 +1,0 @@
-image: archlinux
-packages:
-- scdoc
-tasks:
-- compile: |
-    cd lc
-    make
