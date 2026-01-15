@@ -3,5 +3,5 @@ packages:
 - scdoc
 tasks:
 - compile: |
-  cd lc
-  make
+    cd lc
+    make
