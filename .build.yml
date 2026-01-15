@@ -1,0 +1,7 @@
+image: alpine/edge
+packages:
+- scdoc
+tasks:
+- compile: |
+  cd lc
+  make
