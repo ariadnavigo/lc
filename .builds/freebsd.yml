@@ -1,0 +1,7 @@
+image: freebsd/latest
+packages:
+- scdoc
+tasks:
+- compile: |
+    cd lc
+    make
