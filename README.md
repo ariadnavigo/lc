@@ -40,7 +40,7 @@ standard error.
 
 For example:
 
-```shell
+```shell-session
 $ echo '2 4 +' | lc
 6.000000
 $ lc -e '-10 3 ^'
@@ -60,13 +60,13 @@ basics.
 When sending a patch for the first time, it is highly recommended to set up the
 email address like this:
 
-```shell
+```shell-session
 $ git config sendemail.to "~ariadna/lc-devel@lists.sr.ht"
 ```
 
 The first version of a patch should be marked using ``-v1``:
 
-```shell
+```shell-session
 $ git send-email --anotate -v1 HEAD^
 ```
 
