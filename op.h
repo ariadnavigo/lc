@@ -6,11 +6,7 @@
 #define OP_NAME_SIZE 16
 #define OP_DESCR_SIZE 64
 
-typedef enum {
-  OP_N0,
-  OP_N1,
-  OP_N2,
-} OpType;
+typedef enum { OP_N0, OP_N1, OP_N2 } OpType;
 
 typedef struct {
   char name[OP_NAME_SIZE];
