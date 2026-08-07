@@ -3,7 +3,23 @@
 
 .POSIX:
 
-include config.mk
+# lc version
+VERSION = v0.3.0
+
+# Paths
+# DESTDIR is supported to ease packaging. If you're setting DESTDIR, please do
+# so *with* a trailing /
+
+PREFIX = /usr/local
+MANPREFIX = /usr/local/man
+
+# Flags
+CPPFLAGS = -D_POSIX_C_SOURCE=202405L -DVERSION=\"$(VERSION)\"
+CFLAGS = -std=c23 -Wall -Wextra -pedantic $(CPPFLAGS)
+LDFLAGS = -lm
+
+# Compiler and linker
+CC = cc
 
 SRC = lc.c op.c stack.c
 OBJ = $(SRC:.c=.o)
@@ -13,7 +29,7 @@ all: lc docs/lc.1
 .c.o:
 	$(CC) -c $< $(CFLAGS)
 
-$(OBJ): config.mk op.h stack.h
+$(OBJ): op.h stack.h
 
 lc: $(OBJ) 
 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
