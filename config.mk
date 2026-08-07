@@ -1,5 +1,5 @@
 # lc version
-VERSION = 0.2.0
+VERSION = v0.3.0
 
 # Paths
 # DESTDIR is supported to ease packaging. If you're setting DESTDIR, please do
