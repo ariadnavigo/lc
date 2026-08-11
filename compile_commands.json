@@ -1,0 +1,47 @@
+[
+  {
+    "file": "lc.c",
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "lc.c",
+      "-std=c23",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-D_POSIX_C_SOURCE=202405L",
+      "-DVERSION=\"v0.3.0\""
+    ],
+    "directory": "/home/ari/dev/lc"
+  },
+  {
+    "file": "op.c",
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "op.c",
+      "-std=c23",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-D_POSIX_C_SOURCE=202405L",
+      "-DVERSION=\"v0.3.0\""
+    ],
+    "directory": "/home/ari/dev/lc"
+  },
+  {
+    "file": "stack.c",
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "stack.c",
+      "-std=c23",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-D_POSIX_C_SOURCE=202405L",
+      "-DVERSION=\"v0.3.0\""
+    ],
+    "directory": "/home/ari/dev/lc"
+  }
+]
