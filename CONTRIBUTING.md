@@ -24,8 +24,9 @@ Basic requirements are as follow:
 - Format code with [_clangd_'s][clangdweb] formatter. Refer to your editor's
   documentation on how to install the LSP and enable the formatter.
 - Don't bother with rebasing or "clean git history" (see a discussion about this
-  [here][gitrant]). git is smarter than people give it credit. Code quality is
-  much more important.
+  [here][gitrant]). git is smarter than people give it credit, **but:**
+- Code and commit quality is important. Review the code and make every commit be
+  a change that makes sense.
 
 If some change implies radically changing huge chunks of the code or the
 direction of the project, please discuss it first as an Issue.
