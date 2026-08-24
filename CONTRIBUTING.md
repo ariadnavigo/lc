@@ -20,11 +20,13 @@ Basic requirements are as follow:
 
 - Always branch from _main._
 - Follow the [Conventional Commits specification][convcom] for your commit
-  messages.
+  messages. (The only exception is merge commits; those have a different
+  function, so they're off this rule).
 - Format code with [_clangd_'s][clangdweb] formatter. Refer to your editor's
   documentation on how to install the LSP and enable the formatter.
 - Don't bother with rebasing or "clean git history" (see a discussion about this
-  [here][gitrant]). git is smarter than people give it credit, **but:**
+  [here][gitrant] and [here][gitrant2]). git is smarter than people give it
+  credit, **but:**
 - Code and commit quality is important. Review the code and make every commit be
   a change that makes sense.
 
@@ -50,3 +52,5 @@ And thank you for your contributions and interest!
 [convcom]: https://www.conventionalcommits.org/
 [clangdweb]: https://clangd.llvm.org/
 [gitrant]: https://lucasoshiro.github.io/posts-en/2024-04-08-please_dont_squash/
+[gitrant2]:
+  https://dev.to/dolig/stop-rebasing-everything-your-git-history-isnt-that-special-ln3
