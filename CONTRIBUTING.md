@@ -19,9 +19,10 @@ Don't be shy!
 Basic requirements are as follow:
 
 - Always branch from _main._
-- Follow the [Conventional Commits specification][convcom] for your commit
-  messages. (The only exception is merge commits; those have a different
-  function, so they're off this rule).
+- Write commits that are clear, with a short subject line that specifies the
+  scope of the commit and what the new code does. And please use the commit body
+  to explain things further. Avoid using any _commit message specs,_ be human
+  and smart and always prioritize communication in commit messages.
 - Format code with [_clangd_'s][clangdweb] formatter. Refer to your editor's
   documentation on how to install the LSP and enable the formatter.
 - Don't bother with rebasing or "clean git history" (see a discussion about this
@@ -49,7 +50,6 @@ the process. Keep that always in mind :)
 
 And thank you for your contributions and interest!
 
-[convcom]: https://www.conventionalcommits.org/
 [clangdweb]: https://clangd.llvm.org/
 [gitrant]: https://lucasoshiro.github.io/posts-en/2024-04-08-please_dont_squash/
 [gitrant2]:
